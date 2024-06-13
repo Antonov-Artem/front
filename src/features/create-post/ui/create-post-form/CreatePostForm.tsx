@@ -38,7 +38,7 @@ export const CreatePostForm = ({ className, ...props }: Props) => {
       <input
         {...register('text')}
         type="text"
-        placeholder="Enter post text..."
+        placeholder="Send post..."
         className={clsx(
           'h-full',
           'w-full',
@@ -46,7 +46,7 @@ export const CreatePostForm = ({ className, ...props }: Props) => {
           'border',
           'border-neutral-400',
           'px-4',
-          'outline-blue-600',
+          'outline-none',
           'placeholder-neutral-500',
         )}
       />
@@ -55,18 +55,23 @@ export const CreatePostForm = ({ className, ...props }: Props) => {
         disabled={!isValid}
         className={clsx(
           'h-full',
-          'w-full',
+          'w-12',
+          'flex',
+          'gap-2',
+          'items-center',
+          'justify-center',
           'cursor-pointer',
           'rounded-lg',
           'bg-blue-600',
-          'px-4',
           'text-sm',
           'font-medium',
           'text-white',
           'disabled:opacity-70',
         )}
       >
-        Send
+        <span className={clsx('material-symbols-outlined', 'text-lg')}>
+          arrow_upward
+        </span>
       </button>
     </form>
   );
