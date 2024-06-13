@@ -15,7 +15,15 @@ export const HomePage = () => (
       )}
     >
       <PostList />
-      <CreatePostForm />
+      <CreatePostForm
+        className={clsx(
+          'fixed',
+          'bottom-4',
+          'left-1/2',
+          'w-1/3',
+          'translate-x-[-50%]',
+        )}
+      />
     </div>
   </div>
 );

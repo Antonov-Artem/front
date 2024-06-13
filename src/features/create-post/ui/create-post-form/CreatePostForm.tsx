@@ -1,12 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 
 import { createPostSchema } from 'features/create-post/model/createPostSchema';
 import { createPost } from 'entities/post/api';
 import { CreatePostData } from 'entities/post';
 
-export const CreatePostForm = () => {
+interface Props extends HTMLAttributes<HTMLFormElement> {}
+
+export const CreatePostForm = ({ className, ...props }: Props) => {
   const {
     reset,
     register,
@@ -14,7 +17,7 @@ export const CreatePostForm = () => {
     formState: { isValid },
   } = useForm<CreatePostData>({ resolver: zodResolver(createPostSchema) });
 
-  const onSubmit = (data: CreatePostData) => {
+  const onSubmited = (data: CreatePostData) => {
     createPost(data);
 
     reset();
@@ -22,8 +25,15 @@ export const CreatePostForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="grid h-12 grid-cols-[1fr_auto] gap-2"
+      onSubmit={handleSubmit(onSubmited)}
+      className={clsx(
+        'grid',
+        'h-12',
+        'grid-cols-[1fr_auto]',
+        'gap-2',
+        className,
+      )}
+      {...props}
     >
       <input
         {...register('text')}
