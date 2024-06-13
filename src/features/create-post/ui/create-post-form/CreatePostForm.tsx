@@ -37,6 +37,7 @@ export const CreatePostForm = () => {
           'border-neutral-400',
           'px-4',
           'outline-blue-600',
+          'placeholder-neutral-500',
         )}
       />
       <button
@@ -50,6 +51,7 @@ export const CreatePostForm = () => {
           'bg-blue-600',
           'px-4',
           'text-sm',
+          'font-medium',
           'text-white',
           'disabled:opacity-70',
         )}
